@@ -79,20 +79,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<h2>Popup Chat Window</h2>
-<p>Click on the button at the bottom of this page to open the chat form.</p>
-<p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
+<h2>To chat click on chat</h2>
+<p>Im here to help you.</p>
+<p>You can build your own website with me.</p>
 
 <button class="open-button" onclick="openForm()">Chat</button>
 
 <div class="chat-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
+  <form class="form-container">
     <h1>Chat</h1>
 
     <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
+    <textarea id="msg" placeholder="Type message.." name="msg" required></textarea>
 
-    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn" onclick="sendMessage()">Send</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
@@ -104,6 +104,14 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+}
+
+function sendMessage() {
+  var message = document.getElementById("msg").value;
+  // You can replace '1234567890' with the desired WhatsApp number
+  var phoneNumber = '1234567890';
+  var whatsappLink = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+  window.location.href = whatsappLink;
 }
 </script>
 
