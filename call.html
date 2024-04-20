@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  border: 3px solid #4CAF50;
+  z-index: 9;
+  border-radius: 10px;
+  background-color: white;
+  max-width: 300px;
+  padding: 20px;
+}
+
+.popup textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 150px;
+  border-radius: 5px;
+}
+
+.cancel {
+  background-color: #f44336;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<h2>Welcome to our website</h2>
+<p>Feel free to chat with us or make a call if you have any questions.</p>
+
+<button class="btn" onclick="togglePopup('chat')">Chat with Us</button>
+
+<div class="popup" id="chat">
+  <h1>Chat</h1>
+  <textarea id="msg" placeholder="Type your message here.." required></textarea>
+  <button class="btn" onclick="sendMessage()">Send</button>
+  <button class="btn cancel" onclick="togglePopup('chat')">Close</button>
+</div>
+
+<button class="btn" onclick="makeCall()">Call Us</button>
+
+<script>
+function togglePopup(popupId) {
+  var popup = document.getElementById(popupId);
+  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+}
+
+function sendMessage() {
+  var message = document.getElementById("msg").value;
+  var phoneNumber = '7055589452'; // Replace with desired WhatsApp number
+  var whatsappLink = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+  window.location.href = whatsappLink;
+}
+
+function makeCall() {
+  var phoneNumber = '7055589452'; // Replace with desired phone number
+  var telLink = 'tel:' + phoneNumber;
+  window.location.href = telLink;
+}
+</script>
+
+</body>
+</html>
